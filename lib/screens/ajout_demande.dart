@@ -1,3 +1,4 @@
+import 'package:bestfavor/data/data.dart';
 import 'package:bestfavor/models/demande.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,8 +13,6 @@ class AjoutDemande extends StatefulWidget {
 }
 
 class _AjoutDemandeState extends State<AjoutDemande> {
-  List<String> lesUtilisateurs = ["Jean", "Luc", "Jacques"];
-
   String ami = "";
   TextEditingController motifController = TextEditingController();
   TextEditingController contenuController = TextEditingController();
@@ -47,7 +46,7 @@ class _AjoutDemandeState extends State<AjoutDemande> {
                     }
                   });
                 },
-                items: lesUtilisateurs.map((String value) {
+                items: mesAmis.map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -132,13 +131,14 @@ class _AjoutDemandeState extends State<AjoutDemande> {
               child: ElevatedButton(
                 onPressed: () {
                   if (formKey.currentState!.validate() && creneau != null) {}
-                  /*
-                  Demande(
+                  mesDemandes.add(Demande(
                       id: DateTime.now().toString(),
                       motif: motifController.text,
                       nomUtilisateur: ami,
                       description: contenuController.text,
-                      dateEnvoi: creneau!);*/
+                      dateEnvoi: creneau!));
+                  //Aller à la page d'affichages des demandes de faveurs
+                  Navigator.pop(context);
                 },
                 child: Text("Valider"),
               ),
