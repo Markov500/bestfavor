@@ -57,6 +57,9 @@ class _AjoutDemandeState extends State<AjoutDemande> {
                   labelText: 'Choisir votre ami',
                   border: OutlineInputBorder(),
                 ),
+                validator: (value) {
+                  return value == null ? "Choisissez un ami!" : null;
+                },
               ),
             ),
 
@@ -128,6 +131,7 @@ class _AjoutDemandeState extends State<AjoutDemande> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
+                  if (formKey.currentState!.validate() && creneau != null) {}
                   /*
                   Demande(
                       id: DateTime.now().toString(),
