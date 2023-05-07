@@ -14,40 +14,49 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    Demande demandePage = Demande();
     return DefaultTabController(
         length: 3,
         child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              bottom: const TabBar(tabs: [
-                Tab(
-                  child: Text("Demande"),
-                ),
-                Tab(
-                  child: Text("Acceptation"),
-                ),
-                Tab(
-                  child: Text("Refus"),
-                ),
-              ]),
-              title: Text(
-                "Best favor",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
+          appBar: AppBar(
+            centerTitle: true,
+            bottom: const TabBar(tabs: [
+              Tab(
+                child: Text("Demande"),
+              ),
+              Tab(
+                child: Text("Acceptation"),
+              ),
+              Tab(
+                child: Text("Refus"),
+              ),
+            ]),
+            title: Text(
+              "Best favor",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.add),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AjoutDemande()));
-                }),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.endDocked,
-            body: TabBarView(
-              children: [Demande(), Acceptation(), Refus()],
-            )));
+          ),
+          body: TabBarView(
+            children: [demandePage, Acceptation(), Refus()],
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AjoutDemande()))
+                  .then((value) {
+                setState(() {
+                  demandePage = Demande();
+                });
+              });
+            },
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        ));
   }
 }

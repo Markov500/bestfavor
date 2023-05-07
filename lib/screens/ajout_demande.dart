@@ -67,6 +67,7 @@ class _AjoutDemandeState extends State<AjoutDemande> {
             Container(
               margin: EdgeInsets.all(10),
               child: TextFormField(
+                controller: motifController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Taper le motif',
@@ -83,6 +84,7 @@ class _AjoutDemandeState extends State<AjoutDemande> {
             Container(
               margin: EdgeInsets.all(10),
               child: TextFormField(
+                controller: contenuController,
                 maxLines: 8,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -130,15 +132,18 @@ class _AjoutDemandeState extends State<AjoutDemande> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  if (formKey.currentState!.validate() && creneau != null) {}
-                  mesDemandes.add(Demande(
-                      id: DateTime.now().toString(),
-                      motif: motifController.text,
-                      nomUtilisateur: ami,
-                      description: contenuController.text,
-                      dateEnvoi: creneau!));
-                  //Aller à la page d'affichages des demandes de faveurs
-                  Navigator.pop(context);
+                  if (formKey.currentState!.validate() && creneau != null) {
+                    mesDemandes.add(Demande(
+                        id: DateTime.now().toString(),
+                        motif: motifController.text,
+                        nomUtilisateur: ami,
+                        description: contenuController.text,
+                        dateEnvoi: creneau!));
+
+                    print(mesDemandes[3].description);
+                    //Aller à la page d'affichages des demandes de faveurs
+                    Navigator.pop(context);
+                  }
                 },
                 child: Text("Valider"),
               ),
