@@ -15,6 +15,7 @@ class _DemandeState extends State<Demande> {
     return Container(
       child: ListView(
         children: mesDemandes
+            .where((element) => element.accepte == null)
             .map((e) => AffichageDemande(
                   maDemande: e,
                 ))

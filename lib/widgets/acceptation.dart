@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:bestfavor/data/data.dart';
+import 'package:bestfavor/widgets/affichage_demande.dart';
 
 class Acceptation extends StatelessWidget {
   const Acceptation({super.key});
@@ -8,7 +8,14 @@ class Acceptation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Page des acceptations..."),
+      child: ListView(
+        children: mesDemandes
+            .where((element) => element.accepte == true)
+            .map((e) => AffichageDemande(
+                  maDemande: e,
+                ))
+            .toList(),
+      ),
     );
   }
 }

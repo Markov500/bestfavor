@@ -11,12 +11,31 @@ class AffichageDemande extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ListTile(
-        leading: FlutterLogo(size: 56.0),
-        title: Text(maDemande.motif),
-        subtitle: Text(maDemande.description),
-        trailing: Icon(Icons.more_vert),
-      ),
-    );
+        child: Column(
+      children: [
+        ListTile(
+          leading: FlutterLogo(size: 56.0),
+          title: Text(maDemande.motif),
+          subtitle: Text(maDemande.description),
+        ),
+        Divider(
+          color: Colors.grey,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ElevatedButton(onPressed: () {}, child: Text("Accepter")),
+            Padding(padding: EdgeInsets.all(10)),
+            ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                ),
+                child: Text("Refuser")),
+            Padding(padding: EdgeInsets.all(10)),
+          ],
+        )
+      ],
+    ));
   }
 }
