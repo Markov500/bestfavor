@@ -1,6 +1,6 @@
 import 'package:bestfavor/screens/ajout_demande.dart';
 import 'package:bestfavor/widgets/acceptation.dart';
-import 'package:bestfavor/widgets/demande.dart';
+import 'package:bestfavor/widgets/demandePage.dart';
 import 'package:bestfavor/widgets/refus.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    Demande demandePage = Demande();
+    DemandePage demandePage = DemandePage();
     return DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
                           builder: (context) => const AjoutDemande()))
                   .then((value) {
                 setState(() {
-                  demandePage = Demande();
+                  demandePage = DemandePage();
                 });
               });
             },

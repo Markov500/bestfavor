@@ -4,13 +4,13 @@ class Demande {
   String nomUtilisateur;
   String description;
   DateTime dateEnvoi;
-  bool? accepte;
+  int accepte = 1;
 
-  Demande(
-      {required this.id,
-      required this.motif,
-      required this.nomUtilisateur,
-      required this.description,
-      required this.dateEnvoi,
-      this.accepte});
+  Demande({
+    required this.id,
+    required this.motif,
+    required this.nomUtilisateur,
+    required this.description,
+    required this.dateEnvoi,
+  });
 }

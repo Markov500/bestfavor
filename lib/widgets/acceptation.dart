@@ -10,7 +10,7 @@ class Acceptation extends StatelessWidget {
     return Container(
       child: ListView(
         children: mesDemandes
-            .where((element) => element.accepte == true)
+            .where((element) => element.accepte == 2)
             .map((e) => AffichageDemande(
                   maDemande: e,
                 ))

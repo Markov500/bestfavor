@@ -1,12 +1,13 @@
 import 'package:bestfavor/models/demande.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class AffichageDemande extends StatelessWidget {
   final Demande maDemande;
+  final accepter;
+  final refuser;
 
-  const AffichageDemande({super.key, required this.maDemande});
+  const AffichageDemande(
+      {super.key, required this.maDemande, this.accepter, this.refuser});
 
   @override
   Widget build(BuildContext context) {
@@ -21,20 +22,28 @@ class AffichageDemande extends StatelessWidget {
         Divider(
           color: Colors.grey,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            ElevatedButton(onPressed: () {}, child: Text("Accepter")),
-            Padding(padding: EdgeInsets.all(10)),
-            ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
-                child: Text("Refuser")),
-            Padding(padding: EdgeInsets.all(10)),
-          ],
-        )
+        maDemande.accepte == 1
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        accepter(maDemande);
+                      },
+                      child: Text("Accepter")),
+                  Padding(padding: EdgeInsets.all(10)),
+                  ElevatedButton(
+                      onPressed: () {
+                        refuser(maDemande);
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red),
+                      ),
+                      child: Text("Refuser")),
+                  Padding(padding: EdgeInsets.all(10)),
+                ],
+              )
+            : Padding(padding: EdgeInsets.all(0))
       ],
     ));
   }

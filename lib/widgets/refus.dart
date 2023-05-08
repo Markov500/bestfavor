@@ -10,7 +10,7 @@ class Refus extends StatelessWidget {
     return Container(
       child: ListView(
         children: mesDemandes
-            .where((element) => element.accepte == false)
+            .where((element) => element.accepte == 3)
             .map((e) => AffichageDemande(
                   maDemande: e,
                 ))
